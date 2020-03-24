@@ -58,7 +58,7 @@ module.exports.pdfhtmlTable = function (data) {
                     </td>
                     <td style="padding: 10px; position:relative; height:70px;" align="right">
                     <div style="max-width:100px; height:100px; position:absolute; top:10px; right: 10px;">
-                    <img style="width:100%; height:90%;" src="` + data.orgurl + `">
+                    <img style="width:100%; height:75%;" src="` + data.orgurl + `">
                      </div> 
                     </td>
                 </tr>

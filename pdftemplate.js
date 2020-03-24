@@ -102,7 +102,7 @@ function getBrochureRows(data) {
             </div>
         </td>
                 <td style="text-align:center;  padding: 0px;" align="center">
-                    <h1 style=" font-size: 20px; padding: 10px;">` + data.orgname + `</h1>
+                    <h1 style=" font-size: 20px; padding: 10px;">` + data.userfilename + `</h1>
                 </td>
                 <td style="text-align:right;  padding: 5px;" align="right">
                     <p style="margin:0; font-size:15px;">` + data.orgaddress + `</p>
@@ -131,7 +131,6 @@ function getBrochureRows(data) {
             <td style="padding:15px; width:200px; vertical-align:text-bottom;">
                 <strong>Images</strong>
             </td>
-            <td style="width:15px; padding:15px; vertical-align:text-bottom;">:</td>
             <td style="vertical-align:bottom; line-height:22px; text-align: justify; padding:15px;">`;
 				var images = elem;
 				for (var i = 0; i < images.length; i++) {
@@ -178,8 +177,9 @@ module.exports.pdfhtmlBrochure = function (data) {
 	totalHTML += getBrochureRows(data);
 	totalHTML += `
     <div style="position:fixed; bottom:20px; margin-left:10px; width:100%;">
-    <p style="font-size: 12px; letter-spacing: 3px; color: #636161; line-height: 20px;">March 1, 2020</p>
-</div>
+        <span style="font-size: 12px; letter-spacing: 3px; color: #636161; line-height: 20px;">` + data.getCurrentDate + `</span>
+        <span style="font-size: 12px; letter-spacing: 3px; color: #636161; line-height: 20px;">` + 1 + `</span>
+    </div>
 </body>
 </html>`;
 
