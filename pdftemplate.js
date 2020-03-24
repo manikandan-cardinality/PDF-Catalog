@@ -177,8 +177,8 @@ module.exports.pdfhtmlBrochure = function (data) {
     `;
 	totalHTML += getBrochureRows(data);
 	totalHTML += `
-    <div style="position:fixed; bottom:20px; text-align:center; width:100%;">
-    <p style="font-size: 12px; letter-spacing: 3px; color: #636161; margin:auto; line-height: 20px;">March 1, 2020</p>
+    <div style="position:fixed; bottom:20px; margin-left:10px; width:100%;">
+    <p style="font-size: 12px; letter-spacing: 3px; color: #636161; line-height: 20px;">March 1, 2020</p>
 </div>
 </body>
 </html>`;
