@@ -13,18 +13,29 @@ const options = {
 	filename: "test-file"
 }
 
+const isPDF = true; // isPDF false means it should be Web page (HTML) else true means PDF
+
 app.get('/', async (req, res) => {
-    const totalHTML = pdftemplate.pdfhtmlBrochure(PDFExportOptionsBrochure);
-	const pdfResponse = await hitPDFService(totalHTML, options);
-	res.setHeader('Content-Type', 'application/pdf');
-	res.send(pdfResponse.file);
+	const totalHTML = pdftemplate.pdfhtmlBrochure(PDFExportOptionsBrochure);
+	if (isPDF) {
+		const pdfResponse = await hitPDFService(totalHTML, options);
+		res.setHeader('Content-Type', 'application/pdf');
+		res.send(pdfResponse.file);
+		return;
+	} else {
+		res.send(totalHTML);
+	}
 });
 
-app.get('/table', async (req, res) => {	
+app.get('/table', async (req, res) => {
 	const totalHTML = newpdftemplate.pdfhtmlTable(PDFExportOptionsTable);
-	const pdfResponse = await hitPDFService(totalHTML, options);
-	res.setHeader('Content-Type', 'application/pdf');
-	res.send(pdfResponse.file);
+	if (isPDF) {
+		const pdfResponse = await hitPDFService(totalHTML, options);
+		res.setHeader('Content-Type', 'application/pdf');
+		res.send(pdfResponse.file);
+	} else {
+		res.send(totalHTML);
+	}
 });
 
 
