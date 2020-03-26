@@ -9,19 +9,22 @@ const port = 3000;
 const PDFExportOptionsBrochure = JSON.parse(fs.readFileSync('./PDF-Export-Options-Brochure.json', 'utf-8'));
 const PDFExportOptionsTable = JSON.parse(fs.readFileSync('./PDF-Export-Options-Table.json', 'utf-8'));
 
+const options = {
+	filename: "test-file"
+}
+
 app.get('/', async (req, res) => {
-    const options = {
-        filename: "test-file"
-    }
     const totalHTML = pdftemplate.pdfhtmlBrochure(PDFExportOptionsBrochure);
 	const pdfResponse = await hitPDFService(totalHTML, options);
 	res.setHeader('Content-Type', 'application/pdf');
 	res.send(pdfResponse.file);
-    // res.send(totalHTML);
 });
 
-app.get('/table', (req, res) => {
-    res.send(newpdftemplate.pdfhtmlTable(PDFExportOptionsTable));
+app.get('/table', async (req, res) => {	
+	const totalHTML = newpdftemplate.pdfhtmlTable(PDFExportOptionsTable);
+	const pdfResponse = await hitPDFService(totalHTML, options);
+	res.setHeader('Content-Type', 'application/pdf');
+	res.send(pdfResponse.file);
 });
 
 
