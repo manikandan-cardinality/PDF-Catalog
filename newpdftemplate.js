@@ -14,7 +14,7 @@ function getRow(row) {
         <img style="width:100%; height:100%;" src="` + row[0] + `">
     </div> */
     row.map((val, idx) => {
-        if (idx > 0)
+        if (idx > 0 && idx < 9)
             rowHTML += '<td style="padding: 5px; border:solid 1px #222;padding: 10px;  overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width:100px;">' + val + '</td>';
     });
     rowHTML += '</tr>';
@@ -24,13 +24,15 @@ function getRow(row) {
 function getCol(cols) {
     var colHTML = `<tbody style="font-size: 11px; text-transform: uppercase;">
     <tr style="background-color: #bfbfbf;">`;
-    cols.map((col) => {
-        colHTML += `
-        <td style="padding: 10px; border:solid 1px #222;padding: 10px;  overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;max-width:120px;"> 
-            <strong>` + col + `</strong>
-        </td>`;
+    cols.map((col, idx) => {
+        if (idx > 0 && idx < 10) {
+            colHTML += `
+            <td style="padding: 10px; border:solid 1px #222;padding: 10px;  overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;max-width:120px;"> 
+                <strong>` + col + `</strong>
+            </td>`;
+        }
     });
     colHTML += '</tr>';
     return colHTML;

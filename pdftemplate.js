@@ -3,12 +3,12 @@ function getBrochureRows(data) {
     var cols = data.cols;
     var tableHTML = '';
     rows.map((row) => {
-        var rowHTML = `<br /><div style="page-break-after:always;"><div style="margin: 5mm 5mm 15mm 5mm; display: block; position: relative;"> 
+        var rowHTML = `<br /><div style="page-break-after:always;"><div style="margin: 2mm 2mm 5mm 2mm; display: block; position: relative;"> 
         <table style="width: 100%; text-align: center; border-collapse: collapse;">
         <tbody style="font-size: 14px; text-transform: capitalize;">
             <tr>
             <td style="padding: 10px; position:relative; height:70px;" align="left" width="33%">
-            <div style="max-width:100px; height:85px; position:absolute; top:10px; left: 10px;">
+            <div style="max-width:100px; height:85px; position:absolute; top:10px;left:10px;">
                 <img style="width:100%; height:85px;" src="`+ data.orgurl + `">
             </div>
         </td>
@@ -22,7 +22,7 @@ function getBrochureRows(data) {
         </tbody>
     </table>
 
-    <table  style="margin: 5mm 5mm 15mm 5mm; display: block; position: relative;page-break-after:always;">
+    <table  style="margin: 2mm 2mm 5mm 2mm; display: block; position: relative;page-break-after:always;">
         <tbody style="font-size: 14px; text-transform: capitalize;">`;
         row.map((elem, index) => {
             if (cols[index].toLowerCase().trim() === 'image') {
@@ -58,9 +58,9 @@ function getBrochureRows(data) {
             else {
                 rowHTML += `
             <tr>
-                <td style="text-align:left;  padding: 15px;" align="left">
-                    <h1 style="margin:0; font-size:16px;"> ` + cols[index] + `</h1>
-                    <p style="font-size: 15px;margin-top:0px;">` + elem + `</p>
+                <td style="text-align:left;  padding:5px;" align="left">
+                    <h1 style="margin:0; font-size:15px;"> ` + cols[index] + `</h1>
+                    <p style="font-size: 14px;margin-top:0px;">` + elem + `</p>
                 </td>
             </tr>     
             `;
