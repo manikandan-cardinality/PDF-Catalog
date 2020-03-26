@@ -22,11 +22,11 @@ function getRow(row) {
 }
 
 function getCol(cols) {
-    var colHTML = `<tbody style="font-size: 11px; text-transform: uppercase;">
+    var colHTML = `<tbody style="font-size: 14px; text-transform: capitalize;">
     <tr style="background-color: #bfbfbf;">`;
     cols.map((col) => {
         colHTML += `
-        <td style="padding: 10px; border:solid 1px #222;"> 
+        <td style="padding:5px; border:solid 1px #222;"> 
             <strong>` + col + `</strong>
         </td>`;
     });
@@ -50,7 +50,7 @@ module.exports.pdfhtmlTable = function (data) {
     for (var i = 0; i < data.rows.length; i += rowsPerPage) {
         totalHTML += `    <div style="margin: 5mm 5mm 15mm 5mm; display: block; position: relative;page-break-after:always;">
         <table style="width: 100%; text-align: center; border-collapse: collapse; overflow-x:auto;">
-            <tbody style="font-size: 11px; text-transform: uppercase;">
+            <tbody style="font-size: 14px; text-transform: capitalize;">
                 <tr>
                     <td style="text-align:left;  padding: 10px;">
                         <h1 style="margin:0; font-size:20px;">` + data.orgname + `</h1>
@@ -94,7 +94,7 @@ function getBrochureRows(data) {
     rows.map((row, index) => {
         var rowHTML = `<br /><div style="page-break-after:always;"><div style="margin: 5mm 5mm 15mm 5mm; display: block; position: relative;"> 
         <table style="width: 100%; text-align: center; border-collapse: collapse;">
-        <tbody style="font-size: 11px; text-transform: uppercase;">
+        <tbody style="font-size: 14px; text-transform: capitalize;">
             <tr>
             <td style="padding: 10px; position:relative; height:70px;" align="left" width="33%">
             <div style="max-width:100px; height:85px; position:absolute; top:10px; left: 10px;">
@@ -105,13 +105,13 @@ function getBrochureRows(data) {
                     <h1 style=" font-size: 20px; padding: 10px;">` + data.userfilename + `</h1>
                 </td>
                 <td style="text-align:right;  padding: 5px;" align="right">
-                    <p style="margin:0; font-size:15px;">` + data.orgaddress + `</p>
+                    <p style="margin:0; font-size:15px;line-height:24px;">` + data.orgaddress + `</p>
                 </td>
             </tr>
         </tbody>
     </table>
-        <table style="width: 100%; border-collapse: collapse;page-break-after:always;">
-        <tbody style="font-size: 11px; text-transform: uppercase;">`;
+        <table  style="margin: 5mm 5mm 15mm 5mm; display: block; position: relative;page-break-after:always;">
+        <tbody style="font-size: 14px; text-transform: capitalize;">`;
         row.map((elem, index) => {
             if (cols[index].toLowerCase().trim() === 'image') {
                 var imageUrl = elem;
@@ -119,12 +119,13 @@ function getBrochureRows(data) {
                     imageUrl = 'https://ambeerenginefileupload.s3.amazonaws.com/no-thumb.png';
                 rowHTML += `
             <tr>
-            <td style="padding: 10px 5px;" colspan="3" align="center">
-                <div style="max-width:100px; height:80px; margin:auto 10px; display: inline-block;">
-                    <img style="width:100%; height:100%; border-radius: 5px;" src="` + imageUrl + `">
-                </div>
-            </td>
-        </tr>`;
+                <td style="padding: 10px 5px;" colspan="3" align="center">
+                    <div style="max-width:100px; height:80px; margin:auto 10px; display: inline-block;">
+                        <img style="width:100%; height:100%; border-radius: 5px;" src="` + imageUrl + `">
+                    </div>
+                </td>
+            </tr>
+            `;
             }
             else if (cols[index].toLowerCase().trim() === 'images') {
                 rowHTML += `<tr>
@@ -139,32 +140,31 @@ function getBrochureRows(data) {
                     <img style="width:100%; height:100%; border-radius: 5px;" src="` + images[i] + `">
                 </div>`;
                 }
-                rowHTML += `</td>
+                rowHTM `</td>
                         </t r>`;
             }
             else {
                 rowHTML += `
             <tr>
-            <td style="text-align:left;  padding: 10px;" align="left">
-                            <h1 style="margin:0; font-size:16px;"> ` + cols[index] + `</h1>
-                            <p style="font-size: 15px;margin-top:0px;">` + elem + `</p>
-                        </td>
-                </tr>
-                `;
+                <td style="text-align:left;  padding: 15px;" align="left">
+                    <h1 style="margin:0; font-size:16px;"> ` + cols[index] + `</h1>
+                    <p style="font-size: 15px;margin-top:0px;">` + elem + `</p>
+                </td>
+            </tr>
+            `;
             }
         });
         rowHTML += `</tbody>
         </table>
         </div>
         </div>
-            <div style="margin-left:10px; font-size: 12px; letter-spacing: 3px; color: #636161; line-height: 20px;float:left;margin-top:-40px;">` + data.getCurrentDate + `</div>
-            <div style="font-size: 12px; letter-spacing: 3px; color: #636161; line-height: 20px;float:right;right:30px;position:relative;margin-top:-40px;">` + (index + 1) + `</div>
         `;
         tableHTML += rowHTML;
     });
     return tableHTML;
 }
 module.exports.pdfhtmlBrochure = function (data) {
+    var index = 0;
     var totalHTML = `
     <html>
 <head>
@@ -179,10 +179,15 @@ module.exports.pdfhtmlBrochure = function (data) {
     `;
     totalHTML += getBrochureRows(data);
     totalHTML += `
+    <div style="position:fixed; bottom:20px; text-align:center; width:100%;">
+        <div style="margin-left:30px; font-size: 12px; letter-spacing: 3px; color: #636161; line-height: 20px;float:left;margin-top:-40px;">` + data.getCurrentDate + `</div>
+        <div style="font-size: 12px; letter-spacing: 3px; color: #636161; line-height: 20px;float:right;right:30px;position:relative;margin-top:-40px;">` + (index + 1) + `</div>
+    </div>
 </body>
 </html>`;
 
     return totalHTML;
 };
+
 
 /*        */
