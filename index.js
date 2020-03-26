@@ -9,13 +9,13 @@ const port = 3000;
 const PDFExportOptionsBrochure = JSON.parse(fs.readFileSync('./PDF-Export-Options-Brochure.json', 'utf-8'));
 const PDFExportOptionsTable = JSON.parse(fs.readFileSync('./PDF-Export-Options-Table.json', 'utf-8'));
 
-const options = {
-	filename: "test-file"
-}
-
 const isPDF = true; // isPDF false means it should be Web page (HTML) else true means PDF
 
 app.get('/', async (req, res) => {
+	const options = {
+		filename: "test-file",
+		tableFormat: false
+	}
 	const totalHTML = pdftemplate.pdfhtmlBrochure(PDFExportOptionsBrochure);
 	if (isPDF) {
 		const pdfResponse = await hitPDFService(totalHTML, options);
@@ -28,6 +28,10 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/table', async (req, res) => {
+	const options = {
+		filename: "test-file",
+		tableFormat: true
+	}
 	const totalHTML = newpdftemplate.pdfhtmlTable(PDFExportOptionsTable);
 	if (isPDF) {
 		const pdfResponse = await hitPDFService(totalHTML, options);
@@ -52,6 +56,13 @@ async function hitPDFService(html, options) {
 		options: {
 			format: 'A4',
 			landscape: (options.tableFormat !== undefined && options.tableFormat === true) ? true : false,
+			displayHeaderFooter: (options.tableFormat !== undefined && options.tableFormat === true) ? false : true,
+			footerTemplate: `
+			<div  class="pdfheader">
+				<div style="margin-left:15px !important; font-size: 12px !important; color: #636161 !important;; float:left !important;">March 26, 2020</div>
+				<div style="margin-right:15px !important; font-size: 12px !important; color: #636161 !important; float:right !important;" class="pageNumber"></div>
+    		</div>`,
+			margin: {top: 20, bottom: 40}
 		},
 		html: html,
 	};

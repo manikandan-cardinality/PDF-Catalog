@@ -2,7 +2,7 @@ function getBrochureRows(data) {
     var rows = data.rows;
     var cols = data.cols;
     var tableHTML = '';
-    rows.map((row, index) => {
+    rows.map((row) => {
         var rowHTML = `<br /><div style="page-break-after:always;"><div style="margin: 5mm 5mm 15mm 5mm; display: block; position: relative;"> 
         <table style="width: 100%; text-align: center; border-collapse: collapse;">
         <tbody style="font-size: 14px; text-transform: capitalize;">
@@ -56,14 +56,13 @@ function getBrochureRows(data) {
                         </t r>`;
             }
             else {
-
                 rowHTML += `
             <tr>
                 <td style="text-align:left;  padding: 15px;" align="left">
                     <h1 style="margin:0; font-size:16px;"> ` + cols[index] + `</h1>
                     <p style="font-size: 15px;margin-top:0px;">` + elem + `</p>
                 </td>
-            </tr>
+            </tr>     
             `;
 
             }
@@ -93,12 +92,7 @@ module.exports.pdfhtmlBrochure = function (data) {
     `;
     totalHTML += getBrochureRows(data);
     totalHTML += `
-    <div style="position:fixed; bottom:20px; text-align:center; width:100%;">
-        <div style="margin-left:30px; font-size: 12px; letter-spacing: 3px; color: #636161; line-height: 20px;float:left;margin-top:-40px;">` + data.getCurrentDate + `</div>
-        <div style="font-size: 12px; letter-spacing: 3px; color: #636161; line-height: 20px;float:right;right:30px;position:relative;margin-top:-40px;">` + (index + 1) + `</div>
-    </div>
 </body>
 </html>`;
-
     return totalHTML;
 };

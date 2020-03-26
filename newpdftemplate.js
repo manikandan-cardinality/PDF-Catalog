@@ -15,7 +15,7 @@ function getRow(row) {
     </div> */
     row.map((val, idx) => {
         if (idx > 0)
-            rowHTML += '<td style="padding: 5px; border:solid 1px #222;">' + val + '</td>';
+            rowHTML += '<td style="padding: 5px; border:solid 1px #222;padding: 10px;  overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width:100px;">' + val + '</td>';
     });
     rowHTML += '</tr>';
     return rowHTML;
@@ -26,7 +26,9 @@ function getCol(cols) {
     <tr style="background-color: #bfbfbf;">`;
     cols.map((col) => {
         colHTML += `
-        <td style="padding: 10px; border:solid 1px #222;"> 
+        <td style="padding: 10px; border:solid 1px #222;padding: 10px;  overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;max-width:120px;"> 
             <strong>` + col + `</strong>
         </td>`;
     });
@@ -80,9 +82,6 @@ module.exports.pdfhtmlTable = function (data) {
     </div>`;
     }
     totalHTML += `
-    <div style="position:fixed; bottom:50px; text-align:center; width:100%;">
-            <p style="font-size: 12px; letter-spacing: 3px; color: #636161; max-width: 300px; margin:auto; line-height: 20px;"></p>
-        </div>
     </body>
 </html>
 `;
