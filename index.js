@@ -14,9 +14,10 @@ app.get('/', async (req, res) => {
         filename: "test-file"
     }
     const totalHTML = pdftemplate.pdfhtmlBrochure(PDFExportOptionsBrochure);
-    const pdfResponse = await hitPDFService(totalHTML, options);
-    res.send(totalHTML);
-   
+	const pdfResponse = await hitPDFService(totalHTML, options);
+	res.setHeader('Content-Type', 'application/pdf');
+	res.send(pdfResponse.file);
+    // res.send(totalHTML);
 });
 
 app.get('/table', (req, res) => {
