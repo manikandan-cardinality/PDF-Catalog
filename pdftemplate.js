@@ -98,7 +98,7 @@ function getBrochureRows(data) {
             <tr>
             <td style="padding: 10px; position:relative; height:70px;" align="left" width="33%">
             <div style="max-width:100px; height:85px; position:absolute; top:10px; left: 10px;">
-                <img style="width:100%; height:100%;" src="`+ data.orgurl + `">
+                <img style="width:100%; height:85px;" src="`+ data.orgurl + `">
             </div>
         </td>
                 <td style="text-align:center;  padding: 0px;" align="center">
@@ -157,10 +157,8 @@ function getBrochureRows(data) {
         </table>
         </div>
         </div>
-        <div style="position:fixed; bottom:20px; margin-left:10px; width:100%;">
-            <div style="font-size: 12px; letter-spacing: 3px; color: #636161; line-height: 20px;float:left;">` + data.getCurrentDate + `</div>
-            <div style="font-size: 12px; letter-spacing: 3px; color: #636161; line-height: 20px;float:right;right:30px;position:relative;">` + (index + 1) + `</div>
-        </div>
+            <div style="margin-left:10px; font-size: 12px; letter-spacing: 3px; color: #636161; line-height: 20px;float:left;margin-top:-40px;">` + data.getCurrentDate + `</div>
+            <div style="font-size: 12px; letter-spacing: 3px; color: #636161; line-height: 20px;float:right;right:30px;position:relative;margin-top:-40px;">` + (index + 1) + `</div>
         `;
         tableHTML += rowHTML;
     });
