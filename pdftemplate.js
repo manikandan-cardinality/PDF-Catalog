@@ -7,16 +7,16 @@ function getBrochureRows(data) {
         <table style="width: 100%; text-align: center; border-collapse: collapse;">
         <tbody style="font-size: 14px; text-transform: capitalize;">
             <tr>
-            <td style="padding: 10px; position:relative; height:70px;" align="left" width="33%">
-            <div style="max-width:100px; height:85px; position:absolute; top:10px;left:10px;">
-                <img style="width:100%; height:85px;" src="`+ data.orgurl + `">
-            </div>
-        </td>
-                <td style="text-align:center;  padding: 0px;" align="center">
-                    <h1 style=" font-size: 20px; padding: 10px;">` + data.userfilename + `</h1>
+            <td style="padding: 10px; position:relative; height:70px;" align="left" width="30%">
+                <div style="max-width:180px; height:85px; position:absolute; top:1px;left:10px;">
+                    <img style="width:100%; height:85px;" src="`+ data.orgurl + `">
+                </div>
+            </td>
+                <td style="text-align:center; padding: 0px;" align="center" width="40%">
+                    <h1 style="font-size: 20px; padding: 10px;">` + data.userfilename + `</h1>
                 </td>
-                <td style="text-align:right;  padding: 5px;" align="right">
-                    <p style="margin:0; font-size:15px;line-height:24px;">` + data.orgaddress + `</p>
+                <td style="text-align:right; padding: 5px;" align="right" width="30%">
+                    <p style="margin:0; font-size:15px;">` + data.orgaddress + `</p>
                 </td>
             </tr>
         </tbody>
@@ -31,8 +31,8 @@ function getBrochureRows(data) {
                     imageUrl = 'https://ambeerenginefileupload.s3.amazonaws.com/no-thumb.png';
                 rowHTML += `
             <tr>
-                <td style="padding: 10px 5px;" colspan="3" align="center">
-                    <div style="max-width:100px; height:80px; margin:auto 10px; display: inline-block;">
+                <td align="center">
+                    <div style="max-width:500px; height:150px; margin:auto 0px; display: inline-block;">
                         <img style="width:100%; height:100%; border-radius: 5px;" src="` + imageUrl + `">
                     </div>
                 </td>
