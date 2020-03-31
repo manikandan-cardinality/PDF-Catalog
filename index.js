@@ -60,7 +60,7 @@ async function hitPDFService(html, options) {
 			footerTemplate: `
 			<div  class="pdfheader">
 				<div style="margin-left:17px !important; font-size: 12px !important; color: #636161 !important; float:left !important;">March 26, 2020</div>
-				<div style="margin-left:460px !important; font-size: 12px !important; color: #636161 !important; float:right !important;" class="pageNumber"></div>
+				<div style="margin-left:470px !important; font-size: 12px !important; color: #636161 !important; float:right !important;" class="pageNumber"></div>
     		</div>`,
 			margin: {top: 20, bottom: 40}
 		},
