@@ -386,10 +386,18 @@ async function generatePDF(options) {
         };
         if (options.tableFormat === true) {
 			// console.log('\n tableOptions', JSON.stringify(htmlOptions, null, 2), '\n');
+			fs.writeFile('tableOptions.json', JSON.stringify(htmlOptions, null, 2), function (err) {
+				if (err) throw err;
+				console.log('tableOptions Saved!');
+			});
             totalHTML = newpdftemplate.pdfhtmlTable(htmlOptions);
         }
         else {
 			// console.log('\n pdfhtmlBrochure', JSON.stringify(htmlOptions, null, 2), '\n');
+			fs.writeFile('brochureOptions.json', JSON.stringify(htmlOptions, null, 2), function (err) {
+				if (err) throw err;
+				console.log('brochureOptions Saved!');
+			});
             totalHTML = pdftemplate.pdfhtmlBrochure(htmlOptions);
         }
         const pdfResponse = await hitPDFService(totalHTML, options);

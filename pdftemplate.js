@@ -30,13 +30,10 @@ function getBrochureRows(data) {
                 if (imageUrl == '' || !imageUrl)
                     imageUrl = 'https://ambeerenginefileupload.s3.amazonaws.com/no-thumb.png';
                 rowHTML += `
-            <tr>
-                <td align="center">
-                    <div style="max-width:500px; height:150px; margin:auto 0px; display: inline-block;">
-                        <img style="width:100%; height:100%; border-radius: 5px;" src="` + imageUrl + `">
+                    <div style=" margin:auto 0px;margin-left: auto;margin-right: auto;width: 100%;
+                    float: none;text-align:center;">
+                        <img style=" height:20vh; border-radius: 5px;" src="` + imageUrl + `">
                     </div>
-                </td>
-            </tr>
             `;
             }
             else if (cols[index].toLowerCase().trim() === 'images') {

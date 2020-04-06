@@ -66,6 +66,15 @@ async function hitPDFService(html, options) {
 		},
 		html: html,
 	};
+	// let buffer = null;
+	// await Promise.race([
+	// 	await pdfgen.pdfHandler(pdfConfig)
+	// ]).then(function (value) {
+	// 	buffer = value;
+	// }).catch(reason => console.log(`Rejected: ${reason}`));
+	// buffer.fileName = finalFileName;
+	// return buffer;
+
 	let buffer = await pdfgen.pdfHandler(pdfConfig);
 	buffer.fileName = finalFileName;
 	return buffer;
