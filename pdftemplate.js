@@ -7,9 +7,9 @@ function getBrochureRows(data) {
         <table style="width: 100%; text-align: center; border-collapse: collapse;">
         <tbody style="font-size: 14px; text-transform: capitalize;">
             <tr>
-            <td style="padding: 10px; position:relative; height:70px;" align="left" width="30%">
-                <div style="max-width:180px; height:40px; position:absolute; top:1px;left:10px;">
-                    <img style="width:100%; height:40px;" src="`+ data.orgurl + `">
+            <td style="padding: 10px; position:relative;" align="left" width="30%">
+                <div style="max-width:50%; max-height:130px; position:absolute; top:1px;left:10px;">
+                    <img style="width:100%;" src="`+ data.orgurl + `">
                 </div>
             </td>
                 <td style="text-align:center; padding: 0px;" align="center" width="40%">
