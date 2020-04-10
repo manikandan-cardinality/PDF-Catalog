@@ -231,6 +231,8 @@ async function exportExcelCSVPDF(options, jobid) {
 					orgid: options.orgid,
 					tableFormat: options.tableFormat,
 					templateid: options.templateid,
+					userfilename: options.filename,
+					getCurrentDate: getCurrentDate()
 				};
 				const pdfOptionsResponse = await sendPDF(pdfOptions);
 				fileList.push(pdfOptionsResponse);
@@ -516,7 +518,7 @@ async function getPDFRows(options) {
         orgurl = (pgResults[0].orgimageurl) ? pgResults[0].orgimageurl : '';
         orgname = (pgResults[0].name) ? pgResults[0].name : '';
         let fullAddress = '';
-        if(pgResults[0].addressinfor) {
+        if(pgResults[0].addressinfor !== undefined && pgResults[0].addressinfor !== null) {
             try {
                 fullAddress = JSON.parse(pgResults[0].addressinfor);
                 fullAddress = fullAddress.address + '<br />' +

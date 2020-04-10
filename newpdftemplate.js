@@ -61,8 +61,8 @@ module.exports.pdfhtmlTable = function (data) {
                         <p>` + data.orgaddress + `</p>
                     </td>
                     <td style="padding: 10px; position:relative; height:70px;" align="right">
-                    <div style="max-width:180px; height:40px; top:10px; right: 10px;">
-                    <img style="width:100%; height:100%;" src="` + data.orgurl + `">
+                    <div style="max-width:180px; top:10px; right: 10px;">
+                    <img style="width:80%;" src="` + data.orgurl + `">
                      </div> 
                     </td>
                 </tr>
